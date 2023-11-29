@@ -9,7 +9,7 @@
 
 ## Demo
 
-Link to demo https://aurorapolaire.github.io/go-it-test/
+Link to demo https://aurorapolaire.github.io/space-scutum-todo-list/
 
 ## Screenshots
 
