@@ -1,11 +1,19 @@
 # Test Task 'Todo List'
 
-- App has routing : home page and tweets page.
-- Tweets page gives abilites to load users on click ( + scroll to loaded users).
-- You can follow and unfollow users, data is sent to the server, and changed on
-  the front.
-- Filter sorts users according to chosen type (all, follow, following).
-- Back button redirects to main page.
+In order to launch the project, follow the steps:
+
+1. git clone (https://github.com/AuroraPolaire/space-scutum-todo-list.git).
+2. npm install.
+3. npm start.
+
+- Used https://mockapi.io/ for generating fake data.
+- Implemented pagination to manage the display of the task list.
+- Implemented functionality for adding, deleting, and editing tasks, saving new
+  todo text into the local storage(in case user refreshes the page).
+- Used Redux as a state manager.
+- Styled with Material Design components and Styled Components.
+- Implemented responsive design for proper display on different devices (three
+  breakpoints).
 
 ## Demo
 
@@ -13,8 +21,9 @@ Link to demo https://aurorapolaire.github.io/space-scutum-todo-list/
 
 ## Screenshots
 
-![Home Page](https://i.ibb.co/0qyxHY6/tweetNet.png)
-![Tweet Page](https://i.ibb.co/HPTMQcg/tweet-Net1.png)
+![Desktop](https://i.ibb.co/JpbT6HM/desktop.jpg)
+![Tablet](https://i.ibb.co/jVyK01n/tablet.jpg)
+![Mobile](https://i.ibb.co/HPff792/mobile.jpg)
 
 ## Features
 
@@ -24,3 +33,4 @@ Link to demo https://aurorapolaire.github.io/space-scutum-todo-list/
 4. Axios.
 5. Styled-components.
 6. Material Design.
+7. Normalize.css

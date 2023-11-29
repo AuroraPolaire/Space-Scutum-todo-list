@@ -8,7 +8,7 @@ export const StyledApp = styled.div`
   gap: 15px;
 
   .pagination_container {
-    margin-top: 15px;
+    margin: 15px 0 20px;
     width: 100 vw;
     display: flex;
     align-items: center;
