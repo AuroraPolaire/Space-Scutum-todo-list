@@ -34,7 +34,6 @@ function ToDoList({ page }) {
   };
 
   const handleTextChange = e => {
-    console.log(e.currentTarget.value);
     setChangedText(e.currentTarget.value);
   };
 
@@ -82,7 +81,6 @@ function ToDoList({ page }) {
                   className="textarea"
                   id="outlined-multiline-static"
                   label="Edit:"
-                  // style={{ minWidth: '200px' }}
                   multiline
                   rows={3}
                   defaultValue={text}

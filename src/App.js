@@ -12,7 +12,6 @@ import Header from './components/Header/Header';
 function App() {
   const dispatch = useDispatch();
   const totalTodos = useSelector(selectTotalAmount);
-  console.log(totalTodos);
 
   const [totalPages, setTotalPages] = useState(Math.ceil(totalTodos / 5));
   const [pageNumber, setPage] = useState(1);
