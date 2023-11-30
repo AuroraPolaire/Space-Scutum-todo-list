@@ -4,19 +4,22 @@ import Pagination from '@mui/material/Pagination';
 import { getAllTODOs, getTODOs } from './redux/todoOperations';
 import ToDoList from './components/ToDoList/ToDoList';
 import NewTodo from './components/NewTodo/NewTodo';
-import { selectTotalAmount } from './redux/todoSelector';
+import { selectPageNumber, selectTotalAmount } from './redux/todoSelector';
 import { StyledApp } from './App.styled';
 import { GlobalContainer } from './GlobalContainer/GlobalContainer';
 import Header from './components/Header/Header';
+import { setPageNumber } from './redux/todoSlice';
 
 function App() {
   const dispatch = useDispatch();
   const totalTodos = useSelector(selectTotalAmount);
+  const rememberedPageNumber = useSelector(selectPageNumber);
 
   const [totalPages, setTotalPages] = useState(Math.ceil(totalTodos / 5));
-  const [pageNumber, setPage] = useState(1);
+  const [pageNumber, setPage] = useState(rememberedPageNumber);
 
   const handlePageChange = (event, value) => {
+    dispatch(setPageNumber(value));
     setPage(value);
   };
 

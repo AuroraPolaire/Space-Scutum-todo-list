@@ -3,3 +3,4 @@ export const selectIsLoading = state => state.todos.isLoading;
 export const selectTotalAmount = state => state.todos.todosAmount;
 export const selectTodosDone = state => state.todos.todosDone;
 export const selectNewToDo = state => state.todos.newToDO;
+export const selectPageNumber = state => state.todos.page;

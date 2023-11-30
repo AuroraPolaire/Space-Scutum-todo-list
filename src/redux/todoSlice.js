@@ -16,10 +16,14 @@ const todoSlice = createSlice({
     todosAmount: 0,
     todosDone: 0,
     newToDO: '',
+    page: 1,
     isLoading: false,
     error: null,
   },
   reducers: {
+    setPageNumber(state, { payload }) {
+      state.page = payload;
+    },
     forgetNewToDo(state) {
       state.newToDO = '';
     },
@@ -107,10 +111,11 @@ const todoSlice = createSlice({
 const persistConfig = {
   key: 'todos',
   storage,
-  whitelist: ['newToDO'],
+  whitelist: ['newToDO', 'page'],
 };
 
 export const {
+  setPageNumber,
   increaseDoneAmount,
   decreaseDoneAmount,
   rememberNewToDo,
