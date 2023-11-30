@@ -42,9 +42,13 @@ export const StyledToDoBox = styled.div`
   }
 
   .textarea {
-    width: 200px;
+    width: 100%;
     @media screen and (min-width: 768px) {
       width: 500px;
+    }
+
+    @media screen and (min-width: 1440px) {
+      width: 100%;
     }
   }
 
