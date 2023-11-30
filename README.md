@@ -15,6 +15,16 @@ In order to launch the project, follow the steps:
 - Implemented responsive design for proper display on different devices (three
   breakpoints).
 
+## Features/ technology stack
+
+1. React.
+2. Redux Toolkit.
+3. Redux-persist.
+4. Axios.
+5. Styled-components.
+6. Material UI.
+7. Normalize.css
+
 ## Demo
 
 Link to demo https://aurorapolaire.github.io/space-scutum-todo-list/
@@ -24,13 +34,3 @@ Link to demo https://aurorapolaire.github.io/space-scutum-todo-list/
 ![Desktop](https://i.ibb.co/JpbT6HM/desktop.jpg)
 ![Tablet](https://i.ibb.co/jVyK01n/tablet.jpg)
 ![Mobile](https://i.ibb.co/HPff792/mobile.jpg)
-
-## Features
-
-1. React.
-2. Redux Toolkit.
-3. Redux-persist.
-4. Axios.
-5. Styled-components.
-6. Material Design.
-7. Normalize.css
