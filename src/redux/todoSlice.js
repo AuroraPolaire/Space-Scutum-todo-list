@@ -56,8 +56,8 @@ const todoSlice = createSlice({
       .addCase(createTODOs.pending, state => {
         state.isLoading = true;
       })
-      .addCase(createTODOs.fulfilled, (state, { payload }) => {
-        state.todosList.push(payload);
+      .addCase(createTODOs.fulfilled, state => {
+        // state.todosList.push(payload);
         state.isLoading = false;
       })
       .addCase(createTODOs.rejected, state => {

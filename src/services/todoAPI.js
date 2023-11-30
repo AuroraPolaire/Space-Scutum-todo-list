@@ -8,7 +8,9 @@ export const fetchAllToDos = async () => {
 };
 
 export const fetchToDos = async page => {
-  const { data } = await axios.get(`/todos?page=${page}&limit=6`);
+  const { data } = await axios.get(
+    `/todos?page=${page}&limit=6&orderby=id&order=desc`
+  );
   return data;
 };
 

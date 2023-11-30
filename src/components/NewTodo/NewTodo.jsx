@@ -1,12 +1,13 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { createTODOs, getAllTODOs } from '../../redux/todoOperations';
+import { createTODOs, getAllTODOs, getTODOs } from '../../redux/todoOperations';
 import { TextField } from '@mui/material';
 import { StyledNewTodoContainer, StyledSubmitButton } from './NewTodo.styled';
 import { forgetNewToDo, rememberNewToDo } from '../../redux/todoSlice';
 import { selectNewToDo } from '../../redux/todoSelector';
 
-function NewTodo() {
+function NewTodo({ page }) {
   const dispatch = useDispatch();
   const todoText = useSelector(selectNewToDo);
   const [newTodo, setNewToDo] = useState(todoText);
@@ -18,9 +19,12 @@ function NewTodo() {
 
   const handleSubmit = () => {
     if (newTodo.length === 0) return;
-    setNewToDo('');
-    dispatch(createTODOs(newTodo)).then(() => dispatch(getAllTODOs()));
-    dispatch(forgetNewToDo());
+    dispatch(createTODOs(newTodo)).then(() => {
+      dispatch(getAllTODOs());
+      dispatch(getTODOs(page));
+      dispatch(forgetNewToDo());
+      setNewToDo('');
+    });
   };
 
   return (
@@ -46,3 +50,7 @@ function NewTodo() {
 }
 
 export default NewTodo;
+
+NewTodo.propTypes = {
+  page: PropTypes.number.isRequired,
+};

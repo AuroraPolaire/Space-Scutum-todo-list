@@ -34,7 +34,7 @@ function App() {
       <Header />
       <GlobalContainer>
         <StyledApp>
-          <NewTodo pageNumber={pageNumber} />
+          <NewTodo page={pageNumber} />
           <ToDoList page={pageNumber} />
           <div className="pagination_container">
             <Pagination
