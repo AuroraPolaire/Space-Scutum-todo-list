@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/space-scutum-todo-list/static/css/main.63045e7f.css",
-    "main.js": "/space-scutum-todo-list/static/js/main.0196f711.js",
+    "main.js": "/space-scutum-todo-list/static/js/main.ee2b0f78.js",
     "index.html": "/space-scutum-todo-list/index.html",
     "main.63045e7f.css.map": "/space-scutum-todo-list/static/css/main.63045e7f.css.map",
-    "main.0196f711.js.map": "/space-scutum-todo-list/static/js/main.0196f711.js.map"
+    "main.ee2b0f78.js.map": "/space-scutum-todo-list/static/js/main.ee2b0f78.js.map"
   },
   "entrypoints": [
     "static/css/main.63045e7f.css",
-    "static/js/main.0196f711.js"
+    "static/js/main.ee2b0f78.js"
   ]
 }
