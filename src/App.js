@@ -26,7 +26,7 @@ function App() {
   }, [dispatch, pageNumber]);
 
   useEffect(() => {
-    setTotalPages(Math.ceil(totalTodos / 5));
+    setTotalPages(Math.ceil(totalTodos / 6));
   }, [totalTodos]);
 
   return (
