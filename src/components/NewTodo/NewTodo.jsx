@@ -3,13 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createTODOs, getAllTODOs } from '../../redux/todoOperations';
 import { TextField } from '@mui/material';
 import { StyledNewTodoContainer, StyledSubmitButton } from './NewTodo.styled';
-import { rememberNewToDo } from '../../redux/todoSlice';
+import { forgetNewToDo, rememberNewToDo } from '../../redux/todoSlice';
 import { selectNewToDo } from '../../redux/todoSelector';
 
 function NewTodo() {
   const dispatch = useDispatch();
   const todoText = useSelector(selectNewToDo);
-  const [newTodo, setNewToDo] = useState('');
+  const [newTodo, setNewToDo] = useState(todoText);
 
   const handleNewTodo = text => {
     setNewToDo(text);
@@ -18,7 +18,9 @@ function NewTodo() {
 
   const handleSubmit = () => {
     if (newTodo.length === 0) return;
+    setNewToDo('');
     dispatch(createTODOs(newTodo)).then(() => dispatch(getAllTODOs()));
+    dispatch(forgetNewToDo());
   };
 
   return (
@@ -29,7 +31,7 @@ function NewTodo() {
         fullWidth
         multiline
         rows={4}
-        defaultValue={todoText || ''}
+        value={newTodo}
         onChange={e => handleNewTodo(e.currentTarget.value)}
       />
       <StyledSubmitButton

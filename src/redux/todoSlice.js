@@ -20,6 +20,9 @@ const todoSlice = createSlice({
     error: null,
   },
   reducers: {
+    forgetNewToDo(state) {
+      state.newToDO = '';
+    },
     rememberNewToDo(state, { payload }) {
       state.newToDO = payload;
     },
@@ -107,6 +110,10 @@ const persistConfig = {
   whitelist: ['newToDO'],
 };
 
-export const { increaseDoneAmount, decreaseDoneAmount, rememberNewToDo } =
-  todoSlice.actions;
+export const {
+  increaseDoneAmount,
+  decreaseDoneAmount,
+  rememberNewToDo,
+  forgetNewToDo,
+} = todoSlice.actions;
 export const todoReducer = persistReducer(persistConfig, todoSlice.reducer);
