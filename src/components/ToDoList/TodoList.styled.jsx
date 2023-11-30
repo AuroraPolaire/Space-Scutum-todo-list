@@ -5,12 +5,10 @@ export const StyledToDoBox = styled.div`
   flex-direction: column;
   gap: 10px;
 
-  @media screen and (min-width: 768px) {
-  }
-
   @media screen and (min-width: 1440px) {
-    flex-direction: row;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-column-gap: 10px;
   }
 
   .todo_list {
@@ -41,9 +39,6 @@ export const StyledToDoBox = styled.div`
     @media screen and (min-width: 768px) {
       align-items: center;
     }
-
-    @media screen and (min-width: 1440px) {
-    }
   }
 
   .textarea {
@@ -51,18 +46,12 @@ export const StyledToDoBox = styled.div`
     @media screen and (min-width: 768px) {
       width: 500px;
     }
-
-    @media screen and (min-width: 1440px) {
-    }
   }
 
   .todo__text {
     padding: 16px;
     @media screen and (min-width: 768px) {
       min-width: 500px;
-    }
-
-    @media screen and (min-width: 1440px) {
     }
   }
 
