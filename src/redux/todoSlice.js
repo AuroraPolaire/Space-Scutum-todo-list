@@ -9,6 +9,15 @@ import {
   getTODOs,
 } from './todoOperations';
 
+const handlePending = state => {
+  state.isLoading = true;
+};
+
+const handleRejected = (state, action) => {
+  state.isLoading = false;
+  state.error = action.payload;
+};
+
 const todoSlice = createSlice({
   name: 'todos',
   initialState: {
@@ -39,9 +48,6 @@ const todoSlice = createSlice({
   },
   extraReducers: builder =>
     builder
-      .addCase(getAllTODOs.pending, state => {
-        state.isLoading = true;
-      })
       .addCase(getAllTODOs.fulfilled, (state, { payload }) => {
         state.todosAmount = payload.length;
         const done = payload.reduce((acc, todo) => {
@@ -53,47 +59,19 @@ const todoSlice = createSlice({
         state.todosDone = done;
         state.isLoading = false;
       })
-      .addCase(getAllTODOs.rejected, state => {
-        state.isLoading = false;
-        state.error = true;
-      })
-      .addCase(createTODOs.pending, state => {
-        state.isLoading = true;
-      })
       .addCase(createTODOs.fulfilled, state => {
         // state.todosList.push(payload);
         state.isLoading = false;
       })
-      .addCase(createTODOs.rejected, state => {
-        state.isLoading = false;
-        state.error = true;
-      })
-      .addCase(getTODOs.pending, state => {
-        state.isLoading = true;
-      })
       .addCase(getTODOs.fulfilled, (state, { payload }) => {
         state.todosList = payload;
         state.isLoading = false;
-      })
-      .addCase(getTODOs.rejected, state => {
-        state.isLoading = false;
-        state.error = true;
-      })
-      .addCase(editTODOs.pending, state => {
-        state.isLoading = true;
       })
       .addCase(editTODOs.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.todosList = state.todosList.map(todo =>
           todo.id === payload.id ? payload : todo
         );
-      })
-      .addCase(editTODOs.rejected, state => {
-        state.isLoading = false;
-        state.error = true;
-      })
-      .addCase(deleteTODOs.pending, state => {
-        state.isLoading = true;
       })
       .addCase(deleteTODOs.fulfilled, (state, { payload }) => {
         const index = state.todosList.findIndex(todo => todo.id === payload.id);
@@ -102,10 +80,18 @@ const todoSlice = createSlice({
         }
         state.isLoading = false;
       })
-      .addCase(deleteTODOs.rejected, state => {
-        state.isLoading = false;
-        state.error = true;
-      }),
+      .addMatcher(
+        action => action.type.endsWith('/pending'),
+        state => {
+          handlePending(state);
+        }
+      )
+      .addMatcher(
+        action => action.type.endsWith('/rejected'),
+        (state, action) => {
+          handleRejected(state, action);
+        }
+      ),
 });
 
 const persistConfig = {
