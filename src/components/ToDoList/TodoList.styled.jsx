@@ -57,6 +57,10 @@ export const StyledToDoBox = styled.div`
     @media screen and (min-width: 768px) {
       min-width: 500px;
     }
+
+    &.strikethrough {
+      text-decoration: line-through;
+    }
   }
 
   .button-group {

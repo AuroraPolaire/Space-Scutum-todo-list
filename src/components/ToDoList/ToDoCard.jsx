@@ -24,7 +24,13 @@ const ToDoCard = ({
         {changeTodo[index] ? (
           <TextFieldItem text={text} setChangedText={setChangedText} />
         ) : (
-          <div className="todo__text">{text}</div>
+          <div
+            className={
+              state === true ? 'todo__text strikethrough' : 'todo__text'
+            }
+          >
+            {text}
+          </div>
         )}
       </div>
       <div className="button-group">
