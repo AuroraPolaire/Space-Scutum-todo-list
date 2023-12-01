@@ -23,17 +23,14 @@ const Filter = () => {
   const handleSorting = (state, pageNumber) => {
     switch (state) {
       case 'all':
-        dispatch(setPageNumber(1));
         dispatch(getAllTODOs());
         dispatch(getTODOs({ page: pageNumber, state: state }));
         return;
       case 'true':
-        dispatch(setPageNumber(1));
         dispatch(getCompletedToDosAmount());
         dispatch(getTODOs({ page: pageNumber, state: state }));
         return;
       case 'false':
-        dispatch(setPageNumber(1));
         dispatch(getUncompletedToDosAmount());
         dispatch(getTODOs({ page: pageNumber, state: state }));
         return;
@@ -44,6 +41,7 @@ const Filter = () => {
 
   const handleFilter = state => {
     setFilterState(state);
+    dispatch(setPageNumber(1));
     // handleSorting(state, 1);
   };
 
