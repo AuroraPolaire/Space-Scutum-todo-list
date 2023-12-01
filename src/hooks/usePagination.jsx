@@ -16,8 +16,8 @@ const usePagination = () => {
   }, [totalTodos]);
 
   const handlePageChange = (event, value) => {
-    dispatch(setPageNumber(value));
     setPage(value);
+    dispatch(setPageNumber(value));
   };
 
   return { pageNumber, handlePageChange, totalPages };

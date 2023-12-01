@@ -17,32 +17,21 @@ const Filter = () => {
   const page = useSelector(selectPageNumber);
 
   useEffect(() => {
-    handleSorting(filterState, page);
-  }, [page, filterState]);
-
-  const handleSorting = (state, pageNumber) => {
-    switch (state) {
-      case 'all':
-        dispatch(getAllTODOs());
-        dispatch(getTODOs({ page: pageNumber, state: state }));
-        return;
-      case 'true':
-        dispatch(getCompletedToDosAmount());
-        dispatch(getTODOs({ page: pageNumber, state: state }));
-        return;
-      case 'false':
-        dispatch(getUncompletedToDosAmount());
-        dispatch(getTODOs({ page: pageNumber, state: state }));
-        return;
-      default:
-        return;
+    if (filterState === 'all') {
+      dispatch(getAllTODOs());
+      dispatch(getTODOs({ page: page, state: filterState }));
+    } else if (filterState === 'true') {
+      dispatch(getCompletedToDosAmount());
+      dispatch(getTODOs({ page: page, state: filterState }));
+    } else if (filterState === 'false') {
+      dispatch(getUncompletedToDosAmount());
+      dispatch(getTODOs({ page: page, state: filterState }));
     }
-  };
+  }, [filterState, page]);
 
   const handleFilter = state => {
-    setFilterState(state);
     dispatch(setPageNumber(1));
-    // handleSorting(state, 1);
+    setFilterState(state);
   };
 
   return (
