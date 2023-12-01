@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-// import { useSearchParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   getAllTODOs,
   getCompletedToDosAmount,
   getTODOs,
   getUncompletedToDosAmount,
 } from '../../redux/todoOperations';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { StyledFilter } from './Filter.styled';
+import { setPageNumber } from '../../redux/todoSlice';
+import { selectPageNumber } from '../../redux/todoSelector';
 
-const Filter = ({ page }) => {
+const Filter = () => {
   const dispatch = useDispatch();
-  //   const [searchParams, setSearchParams] = useSearchParams();
   const [filterState, setFilterState] = useState('all');
+  const page = useSelector(selectPageNumber);
 
   useEffect(() => {
     handleSorting(filterState, page);
@@ -22,14 +23,17 @@ const Filter = ({ page }) => {
   const handleSorting = (state, pageNumber) => {
     switch (state) {
       case 'all':
+        dispatch(setPageNumber(1));
         dispatch(getAllTODOs());
         dispatch(getTODOs({ page: pageNumber, state: state }));
         return;
       case 'true':
+        dispatch(setPageNumber(1));
         dispatch(getCompletedToDosAmount());
         dispatch(getTODOs({ page: pageNumber, state: state }));
         return;
       case 'false':
+        dispatch(setPageNumber(1));
         dispatch(getUncompletedToDosAmount());
         dispatch(getTODOs({ page: pageNumber, state: state }));
         return;
@@ -39,9 +43,10 @@ const Filter = ({ page }) => {
   };
 
   const handleFilter = state => {
-    // setSearchParams({ state: state });
     setFilterState(state);
+    // handleSorting(state, 1);
   };
+
   return (
     <StyledFilter>
       <div
@@ -80,6 +85,6 @@ const Filter = ({ page }) => {
 
 export default Filter;
 
-Filter.propTypes = {
-  page: PropTypes.number.isRequired,
-};
+// Filter.propTypes = {
+//   page: PropTypes.number.isRequired,
+// };
