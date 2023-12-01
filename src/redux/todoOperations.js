@@ -5,6 +5,8 @@ import {
   createToDos,
   editToDos,
   deleteToDos,
+  fetchCompletedAmount,
+  fetchUncompletedAmount,
 } from '../services/todoAPI';
 
 export const getAllTODOs = createAsyncThunk(
@@ -21,9 +23,45 @@ export const getAllTODOs = createAsyncThunk(
 
 export const getTODOs = createAsyncThunk(
   'get/todos',
+  async ({ page, state }, thunkAPI) => {
+    try {
+      const result = await fetchToDos({ page: page, state: state });
+      return result;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const getUnsortedTODOs = createAsyncThunk(
+  'getUnsorted/todos',
   async (page, thunkAPI) => {
     try {
       const result = await fetchToDos(page);
+      return result;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const getCompletedToDosAmount = createAsyncThunk(
+  'getCompletedAmount/todos',
+  async (page, thunkAPI) => {
+    try {
+      const result = await fetchCompletedAmount();
+      return result;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const getUncompletedToDosAmount = createAsyncThunk(
+  'getUncompletedAmount/todos',
+  async (page, thunkAPI) => {
+    try {
+      const result = await fetchUncompletedAmount();
       return result;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

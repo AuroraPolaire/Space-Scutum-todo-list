@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
 // import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
-
 import { selectPageNumber, selectTodos } from '../../redux/todoSelector';
-
 import { StyledToDoBox } from './TodoList.styled';
-
 import ToDoCard from './ToDoCard';
 
 function ToDoList() {

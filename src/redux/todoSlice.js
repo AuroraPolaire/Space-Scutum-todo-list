@@ -6,7 +6,10 @@ import {
   deleteTODOs,
   editTODOs,
   getAllTODOs,
+  getCompletedToDosAmount,
   getTODOs,
+  getUncompletedToDosAmount,
+  getUnsortedTODOs,
 } from './todoOperations';
 
 const handlePending = state => {
@@ -60,11 +63,22 @@ const todoSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(createTODOs.fulfilled, state => {
-        // state.todosList.push(payload);
         state.isLoading = false;
       })
       .addCase(getTODOs.fulfilled, (state, { payload }) => {
         state.todosList = payload;
+        state.isLoading = false;
+      })
+      .addCase(getUnsortedTODOs.fulfilled, (state, { payload }) => {
+        state.todosList = payload;
+        state.isLoading = false;
+      })
+      .addCase(getCompletedToDosAmount.fulfilled, (state, { payload }) => {
+        state.todosAmount = payload.length;
+        state.isLoading = false;
+      })
+      .addCase(getUncompletedToDosAmount.fulfilled, (state, { payload }) => {
+        state.todosAmount = payload.length;
         state.isLoading = false;
       })
       .addCase(editTODOs.fulfilled, (state, { payload }) => {

@@ -7,10 +7,34 @@ export const fetchAllToDos = async () => {
   return data;
 };
 
-export const fetchToDos = async page => {
+export const fetchUnsortedToDos = async page => {
   const { data } = await axios.get(
     `/todos?page=${page}&limit=6&orderby=id&order=desc`
   );
+  return data;
+};
+
+export const fetchToDos = async ({ page, state }) => {
+  let result;
+  if (state === 'all') {
+    result = await axios.get(
+      `/todos?page=${page}&limit=6&orderby=id&order=desc`
+    );
+  } else {
+    result = await axios.get(
+      `/todos?page=${page}&limit=6&orderby=id&order=desc&state=${state}`
+    );
+  }
+  return result.data;
+};
+
+export const fetchCompletedAmount = async () => {
+  const { data } = await axios.get(`/todos?state=true`);
+  return data;
+};
+
+export const fetchUncompletedAmount = async () => {
+  const { data } = await axios.get(`/todos?state=false`);
   return data;
 };
 
