@@ -5,11 +5,12 @@ import { createTODOs, getAllTODOs, getTODOs } from '../../redux/todoOperations';
 import { TextField } from '@mui/material';
 import { StyledNewTodoContainer, StyledSubmitButton } from './NewTodo.styled';
 import { forgetNewToDo, rememberNewToDo } from '../../redux/todoSlice';
-import { selectNewToDo } from '../../redux/todoSelector';
+import { selectFilterState, selectNewToDo } from '../../redux/todoSelector';
 
 function NewTodo({ page }) {
   const dispatch = useDispatch();
   const todoText = useSelector(selectNewToDo);
+  const filterState = useSelector(selectFilterState);
   const [newTodo, setNewToDo] = useState(todoText);
 
   const handleNewTodo = text => {
@@ -21,7 +22,7 @@ function NewTodo({ page }) {
     if (newTodo.length === 0) return;
     dispatch(createTODOs(newTodo)).then(() => {
       dispatch(getAllTODOs());
-      dispatch(getTODOs(page));
+      dispatch(getTODOs({ page: page, state: filterState }));
       dispatch(forgetNewToDo());
       setNewToDo('');
     });
