@@ -28,10 +28,14 @@ const todoSlice = createSlice({
     todosDone: 0,
     newToDO: '',
     page: 1,
+    filterState: 'all',
     isLoading: false,
     error: null,
   },
   reducers: {
+    setFilter(state, { payload }) {
+      state.filterState = payload;
+    },
     setPageNumber(state, { payload }) {
       state.page = payload;
     },
@@ -115,5 +119,6 @@ export const {
   decreaseDoneAmount,
   rememberNewToDo,
   forgetNewToDo,
+  setFilter,
 } = todoSlice.actions;
 export const todoReducer = persistReducer(persistConfig, todoSlice.reducer);

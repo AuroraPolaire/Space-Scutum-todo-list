@@ -7,7 +7,7 @@ import {
   getUncompletedToDosAmount,
 } from '../../redux/todoOperations';
 import { StyledFilter } from './Filter.styled';
-import { setPageNumber } from '../../redux/todoSlice';
+import { setPageNumber, setFilter } from '../../redux/todoSlice';
 import { selectPageNumber } from '../../redux/todoSelector';
 
 const Filter = () => {
@@ -30,6 +30,7 @@ const Filter = () => {
 
   const handleFilter = state => {
     dispatch(setPageNumber(1));
+    dispatch(setFilter(state));
     setFilterState(state);
   };
 

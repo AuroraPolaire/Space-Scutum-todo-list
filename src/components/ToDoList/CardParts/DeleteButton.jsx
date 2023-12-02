@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Button } from '@mui/material';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 
@@ -9,13 +9,16 @@ import {
   getAllTODOs,
   getTODOs,
 } from '../../../redux/todoOperations';
+import { selectFilterState } from '../../../redux/todoSelector';
 
 const DeleteButton = ({ page, id }) => {
   const dispatch = useDispatch();
+  const filterState = useSelector(selectFilterState);
 
   const handleDeleteTodo = id => {
     dispatch(deleteTODOs(id)).then(() => {
-      dispatch(getAllTODOs()), dispatch(getTODOs(page));
+      dispatch(getAllTODOs());
+      dispatch(getTODOs({ page: page, state: filterState }));
     });
   };
 
