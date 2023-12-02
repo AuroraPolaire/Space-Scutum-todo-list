@@ -33,7 +33,6 @@ const todoSlice = createSlice({
   },
   reducers: {
     setPageNumber(state, { payload }) {
-      console.log(payload);
       state.page = payload;
     },
     forgetNewToDo(state) {

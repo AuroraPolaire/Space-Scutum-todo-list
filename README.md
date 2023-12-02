@@ -14,6 +14,7 @@ In order to launch the project, follow the steps:
 - Styled with Material Design components and Styled Components.
 - Implemented responsive design for proper display on different devices (three
   breakpoints).
+- Added filtration of tasks.
 
 ## Features/ technology stack
 
@@ -31,6 +32,7 @@ Link to demo https://aurorapolaire.github.io/space-scutum-todo-list/
 
 ## Screenshots
 
-![Desktop](https://i.ibb.co/JpbT6HM/desktop.jpg)
-![Tablet](https://i.ibb.co/jVyK01n/tablet.jpg)
-![Mobile](https://i.ibb.co/HPff792/mobile.jpg)
+Desktop: ![Desktop](https://i.ibb.co/Y3cKVzr/desktop.jpg) Tablet:
+![Tablet](https://i.ibb.co/615nF3c/tablet.jpg) Mobile:
+![Mobile](https://i.ibb.co/Lt2hym3/mobile.jpg) Edit:
+![Edit](https://i.ibb.co/vxHTcPV/edit.jpg)
