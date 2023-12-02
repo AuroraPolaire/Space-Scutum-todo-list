@@ -20,11 +20,7 @@ const DeleteButton = ({ page, id }) => {
   };
 
   return (
-    <Button
-      variant="contained"
-      href="#contained-buttons"
-      onClick={() => handleDeleteTodo(id)}
-    >
+    <Button variant="contained" onClick={() => handleDeleteTodo(id)}>
       <DeleteOutlineIcon />
       Delete
     </Button>
