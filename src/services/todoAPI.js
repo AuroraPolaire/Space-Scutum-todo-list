@@ -3,15 +3,9 @@ import axios from 'axios';
 axios.defaults.baseURL = 'https://6566552aeb8bb4b70ef33077.mockapi.io';
 
 export const fetchAllToDos = async () => {
-  const { data } = await axios.get(`/todos`);
-  return data;
-};
-
-export const fetchUnsortedToDos = async page => {
-  const { data } = await axios.get(
-    `/todos?page=${page}&limit=6&orderby=id&order=desc`
-  );
-  return data;
+  const result = await axios.get(`/todos`);
+  console.log(result);
+  return result.data;
 };
 
 export const fetchToDos = async ({ page, state }) => {

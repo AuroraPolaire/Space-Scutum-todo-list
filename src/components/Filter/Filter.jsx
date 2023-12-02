@@ -6,7 +6,6 @@ import {
   getTODOs,
   getUncompletedToDosAmount,
 } from '../../redux/todoOperations';
-// import PropTypes from 'prop-types';
 import { StyledFilter } from './Filter.styled';
 import { setPageNumber } from '../../redux/todoSlice';
 import { selectPageNumber } from '../../redux/todoSelector';
@@ -71,7 +70,3 @@ const Filter = () => {
 };
 
 export default Filter;
-
-// Filter.propTypes = {
-//   page: PropTypes.number.isRequired,
-// };

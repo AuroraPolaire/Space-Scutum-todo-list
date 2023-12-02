@@ -9,7 +9,6 @@ import {
   getCompletedToDosAmount,
   getTODOs,
   getUncompletedToDosAmount,
-  getUnsortedTODOs,
 } from './todoOperations';
 
 const handlePending = state => {
@@ -34,6 +33,7 @@ const todoSlice = createSlice({
   },
   reducers: {
     setPageNumber(state, { payload }) {
+      console.log(payload);
       state.page = payload;
     },
     forgetNewToDo(state) {
@@ -66,10 +66,6 @@ const todoSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(getTODOs.fulfilled, (state, { payload }) => {
-        state.todosList = payload;
-        state.isLoading = false;
-      })
-      .addCase(getUnsortedTODOs.fulfilled, (state, { payload }) => {
         state.todosList = payload;
         state.isLoading = false;
       })

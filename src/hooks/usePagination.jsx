@@ -8,8 +8,12 @@ const usePagination = () => {
   const totalTodos = useSelector(selectTotalAmount);
   const rememberedPageNumber = useSelector(selectPageNumber);
 
-  const [totalPages, setTotalPages] = useState(Math.ceil(totalTodos / 6));
   const [pageNumber, setPage] = useState(rememberedPageNumber);
+  const [totalPages, setTotalPages] = useState(Math.ceil(totalTodos / 6));
+
+  useEffect(() => {
+    setPage(rememberedPageNumber);
+  }, [rememberedPageNumber]);
 
   useEffect(() => {
     setTotalPages(Math.ceil(totalTodos / 6));

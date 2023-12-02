@@ -33,18 +33,6 @@ export const getTODOs = createAsyncThunk(
   }
 );
 
-export const getUnsortedTODOs = createAsyncThunk(
-  'getUnsorted/todos',
-  async (page, thunkAPI) => {
-    try {
-      const result = await fetchToDos(page);
-      return result;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
-
 export const getCompletedToDosAmount = createAsyncThunk(
   'getCompletedAmount/todos',
   async (page, thunkAPI) => {
