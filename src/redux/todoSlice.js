@@ -24,6 +24,7 @@ const todoSlice = createSlice({
   name: 'todos',
   initialState: {
     todosList: [],
+    todosStatisticsAll: 0,
     todosAmount: 0,
     todosDone: 0,
     newToDO: '',
@@ -57,6 +58,7 @@ const todoSlice = createSlice({
     builder
       .addCase(getAllTODOs.fulfilled, (state, { payload }) => {
         state.todosAmount = payload.length;
+        state.todosStatisticsAll = payload.length;
         const done = payload.reduce((acc, todo) => {
           if (todo.state === true) {
             return acc + 1;

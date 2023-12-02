@@ -1,10 +1,10 @@
 import React from 'react';
 import { StyledHeader } from './Header.styled';
 import { useSelector } from 'react-redux';
-import { selectTodosDone, selectTotalAmount } from '../../redux/todoSelector';
+import { selectTodosDone, selectTotalStats } from '../../redux/todoSelector';
 
 const Header = () => {
-  const totalTodos = useSelector(selectTotalAmount);
+  const totalTodos = useSelector(selectTotalStats);
   const done = useSelector(selectTodosDone);
   return (
     <StyledHeader>
