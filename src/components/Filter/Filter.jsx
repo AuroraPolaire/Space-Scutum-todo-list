@@ -8,12 +8,13 @@ import {
 } from '../../redux/todoOperations';
 import { StyledFilter } from './Filter.styled';
 import { setPageNumber, setFilter } from '../../redux/todoSlice';
-import { selectPageNumber } from '../../redux/todoSelector';
+import { selectFilterState, selectPageNumber } from '../../redux/todoSelector';
 
 const Filter = () => {
   const dispatch = useDispatch();
-  const [filterState, setFilterState] = useState('all');
   const page = useSelector(selectPageNumber);
+  const state = useSelector(selectFilterState);
+  const [filterState, setFilterState] = useState(state);
 
   useEffect(() => {
     if (filterState === 'all') {

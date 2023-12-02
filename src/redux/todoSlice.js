@@ -35,6 +35,7 @@ const todoSlice = createSlice({
   reducers: {
     setFilter(state, { payload }) {
       state.filterState = payload;
+      localStorage.setItem('filterState', payload);
     },
     setPageNumber(state, { payload }) {
       state.page = payload;
@@ -110,7 +111,7 @@ const todoSlice = createSlice({
 const persistConfig = {
   key: 'todos',
   storage,
-  whitelist: ['newToDO', 'page'],
+  whitelist: ['newToDO', 'page', 'filterState'],
 };
 
 export const {
